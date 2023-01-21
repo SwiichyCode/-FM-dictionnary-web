@@ -7,10 +7,13 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
 html {
     font-size: 62.5%;
 }
-
 
 :root {
     //Colors
@@ -31,10 +34,8 @@ html {
     --font-inter: 'Inter', sans-serif;
     --font-lora: 'Lora', serif;
     --font-inconsolata: 'Inconsolata', monospace;
+
+    // Layout
+    --app-padding-mobile: 2.4rem 2.4rem 6.3rem 2.4rem;
 }
-
-
-
-
-
 `;
