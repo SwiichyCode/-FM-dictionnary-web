@@ -1,5 +1,12 @@
-import { render } from 'preact'
-import { App } from './app'
-import './index.css'
+import { render } from "preact";
+import { Fragment } from "preact";
+import { App } from "./app";
+import { GlobalStyle } from "./styles/globalStyles";
 
-render(<App />, document.getElementById('app'))
+render(
+  <Fragment>
+    <GlobalStyle />
+    <App />
+  </Fragment>,
+  document.getElementById("app")
+);
