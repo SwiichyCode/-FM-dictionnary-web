@@ -5,16 +5,14 @@ import { useFetch } from "./hooks/useFetch";
 import { ThemeLayout } from "./components/layout/ThemeLayout";
 import { SearchField } from "./components/common/SearchField";
 import { Header } from "./components/layout/Header";
-import { AudioPlayer } from "./components/common/AudioPlayer";
-import { Meanings } from "./components/common/Meanings";
-import { Source } from "./components/common/Source";
+import { useApi } from "./hooks/useApi";
+import { Main } from "./components/layout/Main";
 
 export const App = () => {
   const query = useSearchStore((state) => state.search);
-  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${query}`;
-  const { data, status } = useFetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/keyboard`,
-    [query]
+  const { data, status, loading, error } = useFetch(
+    `https://api.dictionaryapi.dev/api/v2/entries/en/`,
+    query
   );
 
   return (
@@ -25,13 +23,10 @@ export const App = () => {
             <Header />
             <SearchField />
           </HeaderWrapper>
-          {/* {data.length > 0 && ( */}
-          <MainWrapper>
-            <AudioPlayer data={data} />
-            <Meanings data={data} />
-            <Source data={data} />
-          </MainWrapper>
-          {/* )} */}
+          {status === "fetched" && <Main data={data} />}
+          {status === "error" && (
+            <p>Une erreur est survenue. Veuillez réessayer plus tard.</p>
+          )}
         </AppWrapper>
       </Container>
     </ThemeLayout>
@@ -62,5 +57,3 @@ const HeaderWrapper = styled.div`
   flex-direction: column;
   gap: 2.4rem;
 `;
-
-const MainWrapper = styled.div``;

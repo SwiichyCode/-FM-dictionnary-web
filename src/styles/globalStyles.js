@@ -22,7 +22,7 @@ input {
 body {
     background: ${({ theme }) => theme.body};
     font-family: var(--font-inter);
-    /* transition: all 0.50s linear; */
+    transition: all 0.25s linear;
 }
 
 :root {

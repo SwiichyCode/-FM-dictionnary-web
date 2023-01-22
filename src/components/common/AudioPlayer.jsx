@@ -1,19 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import { ButtonPlay } from "./ButtonPlay";
+import ReactAudioPlayer from "react-audio-player";
 
 export const AudioPlayer = ({ data }) => {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
   return (
     <Container>
-      {data.map(({ word, phonetic }) => {
+      {data.map(({ word, phonetic, phonetics }) => {
         return (
           <div>
             <h1>{word}</h1>
             <p>{phonetic}</p>
+            <ReactAudioPlayer
+              src={phonetics
+                .filter((item) => item.audio.length > 0)
+                .map((item) => item.audio)}
+              autoPlay={isPlaying}
+              onEnded={() => setIsPlaying(false)}
+              style={{ width: "0%", position: "absolute" }}
+            />
           </div>
         );
       })}
-      <ButtonPlay />
+
+      <ButtonPlay onClick={() => setIsPlaying(true)} />
     </Container>
   );
 };
@@ -32,7 +44,7 @@ const Container = styled.div`
       font-weight: 700;
       font-size: 32px;
       line-height: 41px;
-      color: var(--color-dark-400);
+      color: ${({ theme }) => theme.globalText};
     }
 
     p {

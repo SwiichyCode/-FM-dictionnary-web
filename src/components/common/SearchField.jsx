@@ -43,8 +43,8 @@ const StyledSearchField = styled.input`
   font-weight: 700;
   font-size: 1.6rem;
   line-height: 1.9rem;
-  color: var(--color-dark-400);
-  background-color: var(--color-grey-400);
+  color: ${({ theme }) => theme.globalText};
+  background-color: ${({ theme }) => theme.searchBg};
   border-radius: 1.6rem;
   border: none;
   padding: 0 2.4rem;

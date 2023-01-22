@@ -55,7 +55,7 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 1.4rem;
     line-height: 2.4rem;
-    color: var(--color-dark-400);
+    color: ${({ theme }) => theme.globalText};
     font-family: ${({ selected }) => `var(${selected.font})`};
     user-select: none;
     cursor: pointer;
@@ -75,8 +75,8 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1.6rem;
     padding: 2.4rem;
-    background-color: var(--color-white);
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    background-color: ${({ theme }) => theme.selectBg};
+    box-shadow: ${({ theme }) => theme.selectShadow};
     border-radius: 16px;
     z-index: 1;
   }
@@ -86,7 +86,7 @@ const Span = styled.span`
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  color: var(--color-dark-400);
+  color: ${({ theme }) => theme.globalText};
   font-family: ${({ font }) => `var(${font})`};
   cursor: pointer;
 
