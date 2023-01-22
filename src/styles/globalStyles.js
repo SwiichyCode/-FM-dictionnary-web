@@ -15,6 +15,15 @@ html {
     font-size: 62.5%;
 }
 
+input {
+    font-family: var(--font-inter);
+}
+
+body {
+    background: ${({ theme }) => theme.body};
+    /* transition: all 0.50s linear; */
+}
+
 :root {
     //Colors
     --color-dark: #050505;

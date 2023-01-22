@@ -78,6 +78,7 @@ const Container = styled.div`
     background-color: var(--color-white);
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
+    z-index: 1;
   }
 `;
 

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import { Select } from "../common/Select";
+import { ToggleTheme } from "../common/ToggleTheme";
 
 export const Header = () => {
   return (
@@ -10,6 +11,7 @@ export const Header = () => {
       <Wrapper>
         <Select />
         <Line />
+        <ToggleTheme />
       </Wrapper>
     </Container>
   );
@@ -29,7 +31,7 @@ const Wrapper = styled.div`
 `;
 
 const Line = styled.span`
-  width: 1px;
+  width: 2px;
   height: 3.2rem;
   background-color: var(--color-grey-500);
 `;
