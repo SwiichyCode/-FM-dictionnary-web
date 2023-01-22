@@ -21,6 +21,7 @@ input {
 
 body {
     background: ${({ theme }) => theme.body};
+    font-family: var(--font-inter);
     /* transition: all 0.50s linear; */
 }
 
@@ -37,6 +38,7 @@ body {
 
     --color-white: #FFFFFF;
     --color-purple: #A445ED;
+    --color-purple-200: rgba(164, 69, 237, 0.25);
     --color-red: #FF5252;
 
     // Font

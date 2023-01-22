@@ -11,11 +11,11 @@ export const ToggleTheme = ({ isOn, handleToggle }) => {
         <input
           checked={isOn}
           onChange={toggleTheme}
-          id={`react-switch-new`}
+          id="switch"
           type="checkbox"
         />
-        <label htmlFor={`react-switch-new`}>
-          <span className={`react-switch-button`} />
+        <label htmlFor="switch">
+          <span />
         </label>
       </StyledToggle>
       <svg

@@ -5,7 +5,7 @@ export const useFetch = (url, [query]) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!query) return;
+    // if (!query) return;
 
     const fetchData = async () => {
       setStatus("fetching");
