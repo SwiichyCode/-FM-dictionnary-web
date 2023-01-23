@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { AudioPlayer } from "../../components/common/AudioPlayer";
-import { Meanings } from "../../components/common/Meanings";
+import { Meanings } from "../../components/common/Meanings/Meanings";
 import { Source } from "../../components/common/Source";
 
 export const Main = ({ data }) => {

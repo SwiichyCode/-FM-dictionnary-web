@@ -6,6 +6,7 @@ import { ThemeLayout } from "./components/layout/ThemeLayout";
 import { SearchField } from "./components/common/SearchField";
 import { Header } from "./components/layout/Header";
 import { Main } from "./components/layout/Main";
+import { NotFound } from "./components/common/NotFound";
 
 export const App = () => {
   const query = useSearchStore((state) => state.search);
@@ -28,7 +29,7 @@ export const App = () => {
           {status === "error" && (
             <p>Une erreur est survenue. Veuillez réessayer plus tard.</p>
           )}
-          {status === "wordNotFound" && <p>Nop</p>}
+          {status === "wordNotFound" && <NotFound />}
         </AppWrapper>
       </Container>
     </ThemeLayout>

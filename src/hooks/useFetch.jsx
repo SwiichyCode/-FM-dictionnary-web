@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { handleFetchStatus } from "../helpers/statusHandlers";
 import { removeDuplicateData } from "../helpers/removeDuplicateData";
 import { useDebounce } from "./useDebounce";
@@ -12,10 +12,8 @@ export const useFetch = (url, query) => {
   const debouncedQuery = useDebounce(query, 0);
   const prevQuery = usePrev(debouncedQuery);
 
-  // Pour certains mots, l'API renvoie plusieurs résultats. -_-'
+  // Pour certains mots, l'API renvoie plusieurs fois le même résultats. -_-'
   removeDuplicateData(data);
-
-  // Pour certaine requete, l'API n'a pas d'audio associé elle renvoie une erreur 404.
 
   useEffect(() => {
     if (!debouncedQuery) return;
