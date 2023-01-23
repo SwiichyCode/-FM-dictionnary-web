@@ -5,7 +5,6 @@ import { useFetch } from "./hooks/useFetch";
 import { ThemeLayout } from "./components/layout/ThemeLayout";
 import { SearchField } from "./components/common/SearchField";
 import { Header } from "./components/layout/Header";
-import { useApi } from "./hooks/useApi";
 import { Main } from "./components/layout/Main";
 
 export const App = () => {
@@ -14,6 +13,8 @@ export const App = () => {
     `https://api.dictionaryapi.dev/api/v2/entries/en/`,
     query
   );
+
+  console.log(data);
 
   return (
     <ThemeLayout>
@@ -27,6 +28,7 @@ export const App = () => {
           {status === "error" && (
             <p>Une erreur est survenue. Veuillez réessayer plus tard.</p>
           )}
+          {status === "wordNotFound" && <p>Nop</p>}
         </AppWrapper>
       </Container>
     </ThemeLayout>

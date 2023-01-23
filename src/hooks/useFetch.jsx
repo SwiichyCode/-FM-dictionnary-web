@@ -1,35 +1,27 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { debounce } from "lodash";
+import { useState, useEffect, useRef } from "react";
+import { handleFetchStatus } from "../helpers/statusHandlers";
+import { removeDuplicateData } from "../helpers/removeDuplicateData";
+import { useDebounce } from "./useDebounce";
+import { usePrev } from "./usePrev";
 
 export const useFetch = (url, query) => {
-  const [status, setStatus] = useState("idle");
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [debouncedQuery, setDebouncedQuery] = useState(query);
-  const [fetchUrl, setFetchUrl] = useState(url + query);
-  const prevQuery = useRef(null);
+  const debouncedQuery = useDebounce(query, 0);
+  const prevQuery = usePrev(debouncedQuery);
 
-  const debounceFetch = useCallback(
-    debounce(
-      (query) => {
-        setDebouncedQuery(query);
-      },
-      1000,
-      { leading: true, trailing: true }
-    ),
-    []
-  );
+  // Pour certains mots, l'API renvoie plusieurs résultats. -_-'
+  removeDuplicateData(data);
 
-  useEffect(() => {
-    debounceFetch(query);
-    setFetchUrl(url + query);
-  }, [query, debounceFetch, url]);
+  // Pour certaine requete, l'API n'a pas d'audio associé elle renvoie une erreur 404.
 
   useEffect(() => {
     if (!debouncedQuery) return;
-    if (prevQuery.current === debouncedQuery) return;
-    prevQuery.current = debouncedQuery;
+    if (prevQuery === debouncedQuery) return;
+
+    const fetchUrl = url + debouncedQuery;
 
     const fetchData = async () => {
       setLoading(true);
@@ -37,19 +29,7 @@ export const useFetch = (url, query) => {
 
       try {
         const response = await fetch(fetchUrl);
-        if (!response.ok) {
-          setData([]);
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (data.length > 1) {
-          data.splice(1, data.length - 1);
-        }
-
-        setData(data);
-        setStatus("fetched");
+        handleFetchStatus(response, setStatus, setData, setError);
       } catch (error) {
         setError(error.message);
         setStatus("error");
@@ -59,7 +39,7 @@ export const useFetch = (url, query) => {
     };
 
     fetchData();
-  }, [debouncedQuery, fetchUrl]);
+  }, [debouncedQuery]);
 
   return { status, data, error, loading };
 };

@@ -14,9 +14,7 @@ export const AudioPlayer = ({ data }) => {
             <h1>{word}</h1>
             <p>{phonetic}</p>
             <ReactAudioPlayer
-              src={phonetics
-                .filter((item) => item.audio.length > 0)
-                .map((item) => item.audio)}
+              src={phonetics.filter((item) => item.audio.length > 0)[0].audio}
               autoPlay={isPlaying}
               onEnded={() => setIsPlaying(false)}
               style={{ width: "0%", position: "absolute" }}
