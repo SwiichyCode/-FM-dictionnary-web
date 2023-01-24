@@ -16,12 +16,12 @@ html {
 }
 
 input {
-    font-family: var(--font-inter);
+    font-family: ${({ theme }) => `var(${theme.font})`};
 }
 
 body {
-    background: ${({ theme }) => theme.body};
-    font-family: var(--font-inter);
+    background: ${({ theme }) => theme.color.body};
+    font-family: ${({ theme }) => `var(${theme.font})`};
     transition: all 0.25s linear;
 }
 

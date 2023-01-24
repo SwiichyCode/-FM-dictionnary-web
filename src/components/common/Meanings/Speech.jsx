@@ -30,6 +30,6 @@ const Header = styled.header`
     width: 100%;
     /* max-width: 26.6rem; */
     height: 0.1rem;
-    background: ${({ theme }) => theme.meaningLine};
+    background: ${({ theme }) => theme.color.meaningLine};
   }
 `;

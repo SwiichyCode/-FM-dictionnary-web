@@ -41,7 +41,7 @@ const Container = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
-      color: ${({ theme }) => theme.globalText};
+      color: ${({ theme }) => theme.color.globalText};
       text-decoration: none;
     }
   }

@@ -50,7 +50,7 @@ const Container = styled.div`
         font-weight: 400;
         font-size: 1.5rem;
         line-height: 2.4rem;
-        color: ${({ theme }) => theme.globalText};
+        color: ${({ theme }) => theme.color.globalText};
 
         &:nth-child(2) {
           color: var(--color-grey);

@@ -2,28 +2,41 @@ import React from "react";
 import styled from "styled-components";
 import { ButtonPlay } from "./ButtonPlay";
 import ReactAudioPlayer from "react-audio-player";
+import { useAudio } from "../../hooks/useAudio";
 
 export const AudioPlayer = ({ data }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
 
+  // const audioURL = data.map(({ phonetics }) => {
+  //   return phonetics.filter((item) => item.audio.length > 0)[0].audio;
+  // });
+
+  // const audio = new Audio(audioURL);
+
+  // const playAudio = () => {
+  //   setIsPlaying(true);
+  //   audio.play();
+  // };
+
   return (
     <Container>
-      {data.map(({ word, phonetic, phonetics }) => {
+      {data.map(({ word, phonetic }) => {
         return (
           <div>
             <h1>{word}</h1>
             <p>{phonetic}</p>
-            <ReactAudioPlayer
-              src={phonetics.filter((item) => item.audio.length > 0)[0].audio}
+            {/* <ReactAudioPlayer
+              src={audioURL}
               autoPlay={isPlaying}
               onEnded={() => setIsPlaying(false)}
               style={{ width: "0%", position: "absolute" }}
-            />
+            /> */}
           </div>
         );
       })}
 
-      <ButtonPlay onClick={() => setIsPlaying(true)} />
+      {/* <ButtonPlay onClick={playAudio} /> */}
+      <ButtonPlay />
     </Container>
   );
 };
@@ -46,7 +59,7 @@ const Container = styled.div`
       font-weight: 700;
       font-size: 3.2rem;
       line-height: 4.1rem;
-      color: ${({ theme }) => theme.globalText};
+      color: ${({ theme }) => theme.color.globalText};
 
       @media screen and (min-width: 768px) {
         font-size: 6.4rem;

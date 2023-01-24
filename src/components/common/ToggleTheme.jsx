@@ -63,7 +63,7 @@ const StyledToggle = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: ${({ theme }) => theme.toggleButton};
+    background: ${({ theme }) => theme.color.toggleButton};
     border-radius: 100px;
     transition: all 200ms ease-in-out;
     cursor: pointer;

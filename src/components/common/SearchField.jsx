@@ -24,6 +24,7 @@ export const SearchField = () => {
     <Container>
       <Wrapper onSubmit={onSubmit} error={error}>
         <StyledSearchField
+          placeholder="Search for any word..."
           onChange={(e) => {
             e.preventDefault();
             setValue(e.target.value);
@@ -68,12 +69,19 @@ const StyledSearchField = styled.input`
   font-weight: 700;
   font-size: 1.6rem;
   line-height: 1.9rem;
-  color: ${({ theme }) => theme.globalText};
-  background-color: ${({ theme }) => theme.searchBg};
+  color: ${({ theme }) => theme.color.globalText};
+  background-color: ${({ theme }) => theme.color.searchBg};
   border-radius: 1.6rem;
   border: ${({ error }) => (error ? "1px solid #ff5252" : "none")};
   padding: 0 2.4rem;
   box-sizing: border-box;
+
+  &::placeholder {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #575757;
+  }
 
   @media screen and (min-width: 768px) {
     height: 6.4rem;
@@ -82,6 +90,6 @@ const StyledSearchField = styled.input`
   }
 
   &:focus {
-    outline: none;
+    outline: 1px solid #a445ed;
   }
 `;

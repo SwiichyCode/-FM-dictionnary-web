@@ -23,7 +23,7 @@ export const Meanings = ({ data }) => {
 };
 
 const Container = styled.section`
-  color: ${({ theme }) => theme.globalText};
+  color: ${({ theme }) => theme.color.globalText};
 
   article:last-child {
     border-bottom: 0.1rem solid var(--color-grey-500);

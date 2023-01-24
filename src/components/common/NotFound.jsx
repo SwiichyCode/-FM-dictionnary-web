@@ -31,7 +31,7 @@ const Container = styled.div`
     font-size: 2.4rem;
     font-weight: 700;
     margin-top: 1.6rem;
-    color: ${({ theme }) => theme.globalText};
+    color: ${({ theme }) => theme.color.globalText};
     margin-bottom: 2.4rem;
   }
 
