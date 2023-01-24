@@ -1,31 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import iconSearch from "../../assets/images/icon-search.svg";
 import { useSearchStore } from "../../stores/searchStore";
 
 export const SearchField = () => {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const setSearch = useSearchStore((state) => state.setSearch);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (value.length < 1) {
+      setError(true);
+      setErrorMessage("Whoops, can’t be empty…");
+      return;
+    }
+    setError(false);
     setSearch(value);
   };
   return (
-    <Container onSubmit={onSubmit}>
-      <StyledSearchField
-        onChange={(e) => {
-          e.preventDefault();
-          setValue(e.target.value);
-        }}
-      />
-      <img src={iconSearch} alt="search" />
+    <Container>
+      <Wrapper onSubmit={onSubmit} error={error}>
+        <StyledSearchField
+          onChange={(e) => {
+            e.preventDefault();
+            setValue(e.target.value);
+          }}
+        />
+        <img src={iconSearch} alt="search" />
+      </Wrapper>
+
+      {error && <p>{errorMessage}</p>}
     </Container>
   );
 };
 
-const Container = styled.form`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ff5252;
+  }
+`;
+
+const Wrapper = styled.form`
   position: relative;
 
   img {
@@ -46,8 +71,9 @@ const StyledSearchField = styled.input`
   color: ${({ theme }) => theme.globalText};
   background-color: ${({ theme }) => theme.searchBg};
   border-radius: 1.6rem;
-  border: none;
+  border: ${({ error }) => (error ? "1px solid #ff5252" : "none")};
   padding: 0 2.4rem;
+  box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
     height: 6.4rem;
