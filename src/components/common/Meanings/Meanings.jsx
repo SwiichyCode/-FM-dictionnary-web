@@ -4,10 +4,6 @@ import { DefinitionsList } from "./DefinitionsList";
 import { Speech } from "./Speech";
 import { SynonymsList } from "./SynonymsList";
 
-// Todo List
-// -Improve semantic
-// -Improve css
-
 export const Meanings = ({ data }) => {
   return (
     <Container>

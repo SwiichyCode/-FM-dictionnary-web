@@ -16,7 +16,9 @@ const Header = styled.header`
   justify-content: space-between;
   gap: 1.6rem;
   margin: 3.2rem 0;
-
+  @media screen and (min-width: 768px) {
+    margin: 4rem 0;
+  }
   h3 {
     font-style: italic;
     font-weight: 700;
@@ -26,7 +28,7 @@ const Header = styled.header`
 
   .line {
     width: 100%;
-    max-width: 26.6rem;
+    /* max-width: 26.6rem; */
     height: 0.1rem;
     background: ${({ theme }) => theme.meaningLine};
   }

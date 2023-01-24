@@ -9,7 +9,7 @@ export const ToggleTheme = ({ isOn, handleToggle }) => {
     <Container>
       <StyledToggle>
         <input
-          checked={isOn}
+          // checked={isOn}
           onChange={toggleTheme}
           id="switch"
           type="checkbox"

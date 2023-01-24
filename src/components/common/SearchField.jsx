@@ -49,6 +49,12 @@ const StyledSearchField = styled.input`
   border: none;
   padding: 0 2.4rem;
 
+  @media screen and (min-width: 768px) {
+    height: 6.4rem;
+    font-size: 2rem;
+    line-height: 2.1rem;
+  }
+
   &:focus {
     outline: none;
   }

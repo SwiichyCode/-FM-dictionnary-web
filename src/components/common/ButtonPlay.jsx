@@ -25,8 +25,18 @@ const Container = styled.button`
   border: none;
   background: var(--color-purple-200);
   color: var(--color-purple);
-  transition: all 0.2s ease-in-out;
+  /* transition: all 0.2s ease-in-out; */
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 7.5rem;
+    height: 7.5rem;
+
+    svg {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
 
   &:hover {
     color: var(--color-white);

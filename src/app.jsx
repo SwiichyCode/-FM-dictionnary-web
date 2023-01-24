@@ -42,7 +42,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: var(--color-white); */
 `;
 
 const AppWrapper = styled.div`
@@ -53,10 +52,20 @@ const AppWrapper = styled.div`
   background: transparent;
   padding: var(--app-padding-mobile);
   gap: 2.8rem;
+
+  @media screen and (min-width: 768px) {
+    padding: var(--app-padding-tablet);
+    gap: 5rem;
+    max-width: 73.2rem;
+  }
 `;
 
 const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+
+  @media screen and (min-width: 768px) {
+    gap: 5.1rem;
+  }
 `;

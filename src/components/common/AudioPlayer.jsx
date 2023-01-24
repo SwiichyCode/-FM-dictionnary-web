@@ -38,18 +38,32 @@ const Container = styled.div`
     flex-direction: column;
     gap: 0.7rem;
 
+    @media screen and (min-width: 768px) {
+      gap: 1.1rem;
+    }
+
     h1 {
       font-weight: 700;
-      font-size: 32px;
-      line-height: 41px;
+      font-size: 3.2rem;
+      line-height: 4.1rem;
       color: ${({ theme }) => theme.globalText};
+
+      @media screen and (min-width: 768px) {
+        font-size: 6.4rem;
+        line-height: 6.7rem;
+      }
     }
 
     p {
       font-weight: 400;
-      font-size: 18px;
-      line-height: 24px;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
       color: var(--color-purple);
+
+      @media screen and (min-width: 768px) {
+        font-size: 2.4rem;
+        line-height: 2.9rem;
+      }
     }
   }
 `;

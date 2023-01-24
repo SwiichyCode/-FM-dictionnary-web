@@ -48,5 +48,6 @@ body {
 
     // Layout
     --app-padding-mobile: 2.4rem 2.4rem 6.3rem 2.4rem;
+    --app-padding-tablet: 5.8rem 4rem 11.8rem 3.9rem;
 }
 `;
